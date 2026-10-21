@@ -1,0 +1,40 @@
+# Credenciales y secretos: NUNCA subir al repositorio
+.env
+.env.local
+.env.*.local
+
+# Archivo de ejemplo de variables de entorno (este SÍ se sube)
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+.pytest_cache/
+.coverage
+.venv/
+venv/
+env/
+
+# Modelos de voz de Piper (descargables, no versionar)
+voces/
+*.onnx
+*.onnx.json
+
+# Temporales del sistema
+*.log
+*.bak
+*.bak2
+_diag*.py
+_d*.txt
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Base de datos local
+*.db
+*.sqlite
+*.sqlite3
