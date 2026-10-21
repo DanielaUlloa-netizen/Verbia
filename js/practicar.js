@@ -210,6 +210,34 @@ function renderRubric(items) {
   });
 }
 
+function updateCharacterChoices() {
+  characterChoices.querySelectorAll('.character-choice').forEach(function (button) {
+    button.setAttribute('aria-pressed', String(button.dataset.characterId === selectedCharacter));
+  });
+}
+
+function renderCharacterChoices() {
+  characterChoices.replaceChildren();
+  Object.keys(characterData).forEach(function (id) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'character-choice';
+    button.dataset.characterId = id;
+    button.textContent = characterData[id].name;
+    button.addEventListener('click', function () {
+      selectCharacter(id, true);
+    });
+    characterChoices.append(button);
+  });
+  updateCharacterChoices();
+}
+
+function setCharacterChoicesDisabled(disabled) {
+  characterChoices.querySelectorAll('.character-choice').forEach(function (button) {
+    button.disabled = disabled;
+  });
+}
+
 function selectCharacter(id, updateHistory) {
   // Personaje personalizado inyectado dinámicamente (custom-uuid / custom-local).
   if (id && (id === 'custom-local' || id === 'custom' || id.indexOf('custom-') === 0 || id.indexOf('custom_') === 0) && customCharacterCache[id]) {
