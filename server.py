@@ -792,6 +792,7 @@ def logout(request: Request):
 
 
 @app.get("/", response_class=HTMLResponse)
+@app.get("/index.html", response_class=HTMLResponse)
 @app.get("/index%20%281%29.html", response_class=HTMLResponse)
 @app.get("/index (1).html", response_class=HTMLResponse)
 async def index():
