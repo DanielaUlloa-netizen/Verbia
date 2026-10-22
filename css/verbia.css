@@ -63,7 +63,7 @@ summary { -webkit-tap-highlight-color: transparent; }
    (halo, orbitas, stickers). Se limita el recorte al eje X y se deja
    que el eje Y respire para que las animaciones se vean completas. */
 .site-shell {
-  overflow-x: clip;
+  overflow-x: hidden;
   background: var(--paper);
   color: var(--ink);
 }

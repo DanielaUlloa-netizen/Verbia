@@ -100,60 +100,6 @@
   line-height: 1.45;
 }
 
-.verbo-touch {
-  position: relative;
-  width: 245px;
-  height: 255px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
-
-.verbo-touch iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  pointer-events: none;
-  background: transparent;
-}
-
-.verbo-touch:focus-visible {
-  outline: 3px solid var(--lime);
-  outline-offset: 3px;
-  border-radius: 24px;
-}
-
-.verbo-touch-hint {
-  position: absolute;
-  right: 5px;
-  bottom: 16px;
-  padding: 7px 10px;
-  border-radius: 999px;
-  background: var(--lime);
-  color: var(--ink);
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: .1em;
-  transition: opacity .2s;
-}
-
-.verbo-touch.is-goodbye .verbo-touch-hint { opacity: 0; }
-.verbo-goodbye {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  padding: 7px 0 7px 10px;
-  border: 0;
-  background: transparent;
-  color: oklch(0.97 0.015 95 / .78);
-  font: 700 11px var(--font-sans);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
-}
-.verbo-goodbye:hover { color: var(--lime); }
-
 .analysis-hero-footer {
   position: relative;
   z-index: 1;
@@ -470,8 +416,6 @@
     width: 75%;
     margin: 0 0 8px 5%;
   }
-  .verbo-touch { width: 190px; height: 205px; }
-  .verbo-goodbye { right: 4%; bottom: 5px; }
   .analysis-hero-footer { font-size: 8px; }
   .analysis-dashboard { padding-top: 68px; padding-bottom: 76px; }
   .dashboard-heading { display: block; }
@@ -527,12 +471,7 @@
 
 /* GPU para las zonas animadas de la pagina */
 .analysis-next-spark,
-.verbo-coach,
-.verbo-touch {
+.verbo-coach {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-}
-
-@media (max-width: 760px) {
-  .verbo-touch { will-change: transform; }
 }
