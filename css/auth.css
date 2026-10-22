@@ -242,6 +242,7 @@ button { color: inherit; }
 .mascot-scene {
   background: transparent !important;
   background-color: transparent !important;
+  color-scheme: light;
 }
 
 /* Ondas de voz animadas: encajan con una app de practica de voz */
