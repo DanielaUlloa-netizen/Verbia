@@ -118,6 +118,13 @@
   color-scheme: light;
 }
 
+/* En el hero oscuro el documento embebido debe fundirse con el fondo,
+   nunca mostrar el rectangulo negro por defecto del iframe. */
+:root[data-theme="dark"] .analysis-hero .verbo-mascot iframe {
+  background: #061a32 !important;
+  background-color: #061a32 !important;
+}
+
 .analysis-hero-footer {
   position: relative;
   z-index: 1;

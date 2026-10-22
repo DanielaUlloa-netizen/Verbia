@@ -119,8 +119,7 @@
 }
 
 /* El iframe de Verbo no debe mostrar el fondo negro por defecto del navegador. */
-:root[data-theme="dark"] .mascot-frame,
-:root[data-theme="dark"] .verbo-mascot iframe {
+:root[data-theme="dark"] .mascot-frame {
   background: #1b2638 !important;
   background-color: #1b2638 !important;
 }
