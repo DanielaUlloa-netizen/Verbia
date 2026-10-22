@@ -585,3 +585,133 @@
 
 :root[data-theme="dark"] .character-choice { background: #202c40; color: #f1f5f9; border-color: rgb(226 232 240 / 16%); }
 :root[data-theme="dark"] .toast { background: #202c40; color: #f1f5f9; }
+
+/* Practicar en modo oscuro: superficies coherentes y lectura sin ruido. */
+:root[data-theme="dark"] .practice-page {
+  --character-accent-soft: #263449;
+  background: #111827;
+  color: #e5e7eb;
+}
+
+:root[data-theme="dark"] .practice-header {
+  background: #172235;
+  border-color: rgb(226 232 240 / 14%);
+}
+
+:root[data-theme="dark"] .practice-heading p,
+:root[data-theme="dark"] .practice-description p,
+:root[data-theme="dark"] .rubric-copy small,
+:root[data-theme="dark"] .practice-privacy,
+:root[data-theme="dark"] .scene-prompt,
+:root[data-theme="dark"] .scene-hint,
+:root[data-theme="dark"] .practice-feedback {
+  color: #b8c6d6;
+}
+
+:root[data-theme="dark"] .character-picker-card,
+:root[data-theme="dark"] .practice-info-card,
+:root[data-theme="dark"] .practice-scene,
+:root[data-theme="dark"] .scene-character-label,
+:root[data-theme="dark"] .conversation-message,
+:root[data-theme="dark"] .scene-pill,
+:root[data-theme="dark"] .round-control,
+:root[data-theme="dark"] .character-choice,
+:root[data-theme="dark"] .toast {
+  background: #1b2638;
+  color: #e5e7eb;
+  border-color: rgb(226 232 240 / 14%);
+  box-shadow: 0 5px 16px rgb(0 0 0 / 20%);
+}
+
+:root[data-theme="dark"] .practice-scene {
+  background: linear-gradient(145deg, #1b2638 5%, #162235 100%);
+  border-color: color-mix(in oklch, var(--character-accent) 60%, #9ccfe0);
+}
+
+:root[data-theme="dark"] .scene-badge,
+:root[data-theme="dark"] .scene-portrait,
+:root[data-theme="dark"] .message-send input {
+  background: #243247;
+  color: #f3f6fa;
+  border-color: rgb(226 232 240 / 18%);
+}
+
+:root[data-theme="dark"] .conversation-message p,
+:root[data-theme="dark"] .scene-pill,
+:root[data-theme="dark"] .round-control,
+:root[data-theme="dark"] .message-send input::placeholder {
+  color: #cbd5e1;
+}
+
+:root[data-theme="dark"] .scene-bottom {
+  background: linear-gradient(180deg, transparent, rgb(15 23 42 / 72%));
+}
+
+:root[data-theme="dark"] .character-choice[aria-pressed="true"],
+:root[data-theme="dark"] .start-button {
+  color: #111827;
+  background: #a8d8e8;
+}
+
+@media (max-width: 760px) {
+  .practice-layout { width: 100%; overflow-x: hidden; }
+  .practice-sidebar,
+  .practice-workspace,
+  .practice-scene,
+  .scene-center,
+  .conversation-log { min-width: 0; }
+  .message-send { width: 100%; }
+  .message-send input { min-width: 0; }
+  .scene-bottom { width: 100%; max-width: 100%; flex-wrap: wrap; }
+  .practice-controls { flex-wrap: wrap; max-width: 100%; }
+  .practice-controls .start-button { flex: 1 1 180px; max-width: 100%; }
+  .practice-transport { max-width: 100%; flex-wrap: wrap; }
+}
+
+/* La apertura del personaje debe acompañar la charla, no dominarla. */
+.conversation-log .conversation-message:first-child {
+  padding: 8px 11px;
+}
+
+.conversation-log .conversation-message:first-child strong {
+  font-size: 9px;
+  letter-spacing: .08em;
+}
+
+.conversation-log .conversation-message:first-child p {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.scene-prompt {
+  font-size: 13px;
+  line-height: 1.42;
+}
+
+.scene-prompt strong {
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .conversation-log .conversation-message:first-child p {
+    font-size: 12px;
+  }
+
+  .scene-prompt {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 390px) {
+  .conversation-log .conversation-message:first-child p {
+    font-size: 11.5px;
+  }
+
+  .scene-prompt {
+    font-size: 11.5px;
+  }
+
+  .practice-controls { gap: 8px; padding-inline: 4px; }
+  .practice-controls .start-button { flex-basis: 150px; padding-inline: 10px; }
+}

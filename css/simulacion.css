@@ -149,8 +149,32 @@
 }
 
 @media (max-width: 760px) {
-  .duo-students { top: 64px; padding: 0 14px; }
+  /* En móvil los retratos ocupan su propio bloque para no tapar el diálogo. */
+  .duo-students {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 38px;
+    padding: 0 14px;
+    flex: 0 0 auto;
+  }
   .duo-student .scene-portrait { width: 84px; height: 98px; border-radius: 20px; }
   .duo-student .scene-portrait img { border-radius: 15px; }
-  .duo-student .scene-character-label { min-width: 128px; padding: 8px 11px; }
+  .duo-student { min-width: 0; max-width: 44%; }
+  .duo-student .scene-character-label { width: 100%; min-width: 0; max-width: 128px; padding: 7px 9px; }
+  .duo-student .scene-character-label strong,
+  .duo-student .scene-character-label span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .conversation-log .conversation-message:first-child { max-width: 82%; margin-inline: auto; }
+  .conversation-log .conversation-message:first-child p { font-size: 11.5px; line-height: 1.4; }
+}
+
+@media (max-width: 390px) {
+  .duo-students { margin-top: 34px; padding-inline: 8px; }
+  .duo-student .scene-portrait { width: 68px; height: 80px; }
+  .duo-student .scene-character-label { max-width: 105px; font-size: 10px; }
+  .duo-student .scene-character-label strong { font-size: 11px; }
+  .duo-student .scene-character-label span { font-size: 9px; }
 }
