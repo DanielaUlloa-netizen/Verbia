@@ -29,18 +29,104 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --paper: #0f172a;
-  --ink: #f1f5f9;
-  --mint: #26364b;
-  --lime: #94cbed;
-  --coral: #fb923c;
-  --shadow-studio: 0 10px 0 rgb(0 0 0 / 45%);
+  --paper: #111827;
+  --ink: #e5e7eb;
+  --mint: #263449;
+  --lime: #a8d8e8;
+  --coral: #f59a72;
+  --shadow-studio: 0 5px 16px rgb(0 0 0 / 24%);
 }
 
 :root[data-theme="dark"] body,
 :root[data-theme="dark"] .site-shell {
-  background-color: #0f172a;
-  color: #f1f5f9;
+  background-color: #111827;
+  color: #e5e7eb;
+}
+
+/* Modo oscuro sereno: menos parches de color y menos sombras duras. */
+:root[data-theme="dark"] .overview-card,
+:root[data-theme="dark"] .session-panel,
+:root[data-theme="dark"] .session-detail,
+:root[data-theme="dark"] .progress-panel,
+:root[data-theme="dark"] .builder-preview,
+:root[data-theme="dark"] .saved-card,
+:root[data-theme="dark"] .practice-stage-card,
+:root[data-theme="dark"] .history-card {
+  background: #1b2638;
+  border-color: rgb(226 232 240 / 14%);
+  box-shadow: 0 5px 16px rgb(0 0 0 / 22%);
+}
+
+:root[data-theme="dark"] .demo-note,
+:root[data-theme="dark"] .session-insight,
+:root[data-theme="dark"] .transcript-copy,
+:root[data-theme="dark"] .preview-hint,
+:root[data-theme="dark"] .upload-box {
+  background: #243247;
+  border-color: rgb(226 232 240 / 12%);
+}
+
+:root[data-theme="dark"] .session-filter,
+:root[data-theme="dark"] .session-option {
+  background: transparent;
+  border-color: rgb(226 232 240 / 20%);
+}
+
+:root[data-theme="dark"] .session-filter.is-active,
+:root[data-theme="dark"] .session-option[aria-pressed="true"] {
+  background: #33445d;
+  border-color: #9ccfe0;
+  color: #f8fafc;
+}
+
+/* Analisis: eliminar fondos crema/marron heredados en modo oscuro. */
+:root[data-theme="dark"] .analysis-dashboard,
+:root[data-theme="dark"] .session-detail,
+:root[data-theme="dark"] .detail-metric,
+:root[data-theme="dark"] .transcript-copy {
+  color: #e5e7eb;
+}
+
+:root[data-theme="dark"] .session-insight,
+:root[data-theme="dark"] .retroalimentacion-panel,
+:root[data-theme="dark"] .recommendation-panel {
+  background: #243247;
+  color: #e5e7eb;
+  border-color: rgb(168 216 232 / 18%);
+}
+
+:root[data-theme="dark"] #coherence-deviations li,
+:root[data-theme="dark"] .retroalimentacion-detalle li {
+  background: #1b2638;
+  color: #dbe4ee;
+}
+
+:root[data-theme="dark"] .detail-topline,
+:root[data-theme="dark"] .sample-label,
+:root[data-theme="dark"] .detail-kicker,
+:root[data-theme="dark"] .session-summary,
+:root[data-theme="dark"] .panel-kicker,
+:root[data-theme="dark"] .chart-axis,
+:root[data-theme="dark"] .chart-labels,
+:root[data-theme="dark"] .chart-legend {
+  color: #b8c6d6;
+}
+
+:root[data-theme="dark"] .analysis-dashboard h2,
+:root[data-theme="dark"] .analysis-dashboard h3,
+:root[data-theme="dark"] .analysis-dashboard h4 {
+  color: #f3f6fa;
+}
+
+:root[data-theme="dark"] .btn-outline:hover,
+:root[data-theme="dark"] .btn-dark:hover {
+  background: #a8d8e8;
+  color: #111827;
+}
+
+:root[data-theme="dark"] :focus-visible {
+  outline: 3px solid #a8d8e8;
+  outline-offset: 3px;
 }
 
 /* Fondo base parejo: evita parches claros entre secciones. */
@@ -102,6 +188,28 @@
 /* Tableta: logo intermedio */
 @media (min-width: 761px) and (max-width: 1050px) {
   .brand-logo { width: 118px; }
+}
+
+/* Ajuste final: estas reglas quedan al final para unificar las superficies
+   despues de los estilos especificos de cada pagina. */
+:root[data-theme="dark"] .overview-card,
+:root[data-theme="dark"] .session-panel,
+:root[data-theme="dark"] .session-detail,
+:root[data-theme="dark"] .progress-panel,
+:root[data-theme="dark"] .builder-preview,
+:root[data-theme="dark"] .saved-card,
+:root[data-theme="dark"] .practice-stage-card,
+:root[data-theme="dark"] .history-card {
+  background: #1b2638;
+  border-color: rgb(226 232 240 / 14%);
+  box-shadow: 0 5px 16px rgb(0 0 0 / 22%);
+}
+
+:root[data-theme="dark"] .session-filter.is-active,
+:root[data-theme="dark"] .session-option[aria-pressed="true"] {
+  background: #33445d;
+  border-color: #9ccfe0;
+  color: #f8fafc;
 }
 
 .theme-toggle svg {

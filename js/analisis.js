@@ -29,11 +29,10 @@ const overviewSessionCount = document.querySelector('#overview-session-count');
 const overviewClarity = document.querySelector('#overview-clarity');
 const overviewWpm = document.querySelector('#overview-wpm');
 const verboMessage = document.querySelector('#verbo-message');
-const verboTouch = document.querySelector('#verbo-touch');
 const verboFrame = document.querySelector('#verbo-frame');
-const goodbyeButton = document.querySelector('#verbo-goodbye');
 const rangeButtons = Array.from(document.querySelectorAll('.session-filter'));
 const btnDeleteSession = document.querySelector('#btn-delete-session');
+let verboTipIndex = 0;
 
 const metricDefinitions = [
   { key: 'claridad', label: 'Claridad estimada', suffix: '/100', scale: 100 },
@@ -50,8 +49,6 @@ let selectedSessionId = null;
 let selectedRange = 'all';
 let detailRequest = 0;
 const detailCache = new Map();
-let verboTipIndex = 0;
-let verboHasSaidGoodbye = false;
 
 function getSessionDate(session) {
   if (!session || !session.fecha_inicio) return null;
@@ -692,33 +689,24 @@ async function hydrateSessionSummaries() {
 }
 
 function setVerboExpression(expression, message) {
-  verboMessage.textContent = message;
-  verboTouch.classList.toggle('is-goodbye', expression === 'goodbye');
+  if (verboMessage && message) verboMessage.textContent = message;
   if (verboFrame.contentWindow) {
     verboFrame.contentWindow.postMessage({ type: 'verbo-expression', expression }, '*');
   }
 }
 
 const verboTips = [
-  'Esta página usa tus sesiones guardadas. Las puntuaciones son estimaciones calculadas con la transcripción, no una evaluación humana.',
-  'La claridad estimada descuenta puntos por posibles muletillas detectadas en las palabras reconocidas.',
-  'El ritmo se estima usando las palabras reconocidas y la duración total de la sesión; no equivale al tiempo exacto hablando.',
-  'Las pausas no se miden porque no guardamos el audio. Por eso verás un guion en vez de un número inventado.'
+  'Aqui puedes revisar como evoluciona tu claridad y tu ritmo sesion a sesion.',
+  'La claridad estimada resume que tan facil resulta seguir tus ideas segun la transcripcion.',
+  'El ritmo estimado usa tus palabras y la duracion de la practica; no mide pausas exactas.',
+  'Elige una sesion para ver sus metricas, la transcripcion y recomendaciones personalizadas.'
 ];
 
-verboTouch.addEventListener('click', function () {
-  if (verboHasSaidGoodbye) {
-    verboHasSaidGoodbye = false;
-    verboTipIndex = 0;
-  }
+function showNextVerboTip() {
   setVerboExpression('explain', verboTips[verboTipIndex]);
   verboTipIndex = (verboTipIndex + 1) % verboTips.length;
-});
+}
 
-goodbyeButton.addEventListener('click', function () {
-  verboHasSaidGoodbye = true;
-  setVerboExpression('goodbye', '¡Gracias por revisar tus datos reales conmigo! Sigue practicando y celebra cada paso. ¡Hasta pronto!');
-});
 
 rangeButtons.forEach(function (button) {
   button.addEventListener('click', function () {
@@ -740,5 +728,6 @@ rangeButtons.forEach(function (button) {
   });
 });
 
-setVerboExpression('curious', '¡Hola! Toca al pajarito y te explico cómo leer tus métricas reales.');
+setVerboExpression('curious', verboTips[0]);
+window.setInterval(showNextVerboTip, 5000);
 loadSessions();

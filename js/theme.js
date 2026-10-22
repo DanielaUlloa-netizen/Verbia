@@ -1,5 +1,5 @@
 const themeStorageKey = "verbai-theme";
-const LOGO_DARK = "/static/img/verbai-logo-dark.svg";
+const LOGO_DARK = "static/img/verbai-logo-dark.svg";
 const LOGO_LIGHT = "/static/img/verbai-logo-final.svg";
 const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
 const brandLogos = document.querySelectorAll(".brand-logo");

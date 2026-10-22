@@ -430,7 +430,7 @@ async function beginPractice() {
       body: JSON.stringify({
         personaje_id: backendCharacterId(),
         personaje_nombre: character.name,
-        tema: custom ? custom.description : ''
+        tema: custom ? custom.context : ''
       })
     });
     if (!result.sesion_id) throw new Error('El servidor no devolvió un identificador para esta sesión.');
@@ -544,7 +544,7 @@ async function requestSilenceNudge() {
       personaje: backendCharacterId(),
       historial: messages,
       personaje_nombre: character.name,
-      tema: custom ? custom.description : ''
+      tema: custom ? custom.context : ''
     })
   });
   const line = toReadableText((result.respuesta || '').trim());
@@ -601,7 +601,7 @@ async function speakText(text, readyAudio) {
           if (custom) {
             payload.personaje_nombre = custom.name;
             payload.voz = custom.voiceId || 'fish-luis';
-            payload.tema = custom.description || '';
+            payload.tema = custom.context || '';
           }
           return payload;
         })()),
@@ -1012,6 +1012,8 @@ function customCardFor(data, key) {
     accent: 'oklch(0.65 0.16 38)',
     soft: 'oklch(0.93 0.045 38)',
     description: desc || 'Personaje creado en el Constructor.',
+    topic: tema,
+    context: tema ? 'Tema de la conversacion: ' + tema + '. Descripcion e instrucciones: ' + (desc || 'conversacion general') : (desc || 'conversacion general'),
     prompt: 'Eres ' + nombre + '. ' + (desc || 'Conversación general.'),
     greeting: customGreeting(nombre, tema),
     rubric: [
